@@ -1,0 +1,21 @@
+<style>
+  img{
+  border-radius : 50%;
+}
+</style>
+
+<form method="POST" action="/upload/" enctype="multipart/form-data">
+  {% csrf_token %}
+  <img src="" height="300" width="300" name="output" id="output"/>
+  <br/>
+  select image<input type="file" name="g_path" onchange="loadFile(event)"><br/>
+  Description <textarea name="description"></textarea> <br/>
+  <input type="submit" value="Insert Record">
+
+  <script>
+    function loadFile(event){
+    document.getElementById('output').src=URL.createObjectURL(event.target.files[0]);
+    }
+  </script>
+
+</form>

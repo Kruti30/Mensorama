@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head >
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+
+<form method="post" action="/insert/" align="center">
+
+    {% csrf_token %}
+    <label>User Name </label>
+    <input type="text" placeholder="user Name" name = "u_name"/><br/>
+
+    <label>Email</label>
+    <input type="text" placeholder="user Email" name = "email"/><br/>
+
+    <label>Password</label>
+    <input type="text" placeholder="user Email" name = "password"/><br/>
+
+    <label>Date of Birth </label>
+    <input type="text" placeholder="user dob" name = "dob"/><br/>
+
+    <label>phone no</label>
+    <input type="text" placeholder="user phone no" name = "phone_no"/><br/>
+
+    <label>address</label>
+    <input type="text" placeholder="address of user" name = "address"/><br/>
+
+    <label>is_admin</label>
+    <input type="text" placeholder=" is admin or not" name = "is_admin"/><br/>
+
+    <button type = "submit">SUBMIT</button>
+</form>
+
+</body>
+</html>

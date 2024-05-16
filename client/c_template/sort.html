@@ -1,0 +1,39 @@
+{% load static %}
+
+                                {% for data in p %}
+
+                                    <div class="col-xl-4 col-sm-6 col-12" >
+                                        <div class="ltn__product-item ltn__product-item-3 text-center">
+                                            <div class="product-img">
+                                                <img src="/c_static/img/product/{{data.pd_img}}" alt="#" style="height:450px"></a>
+                                                <div class="product-badge">
+                                                    <ul>
+
+                                                    </ul>
+                                                </div>
+                                                <div class="product-hover-ction">
+                                                    <tr>
+
+                                                            <form action="/client/ins_wishlist/" method="POST">
+                                                                 {% csrf_token %}
+                                                            <input type="hidden" name="pd_id" value="{{data.pd_id}}">
+
+                                                                    <button type="submit" title="Wishlist" data-toggle="modal"  style="position:relative;top:-415px;left:130px;">
+                                                                    <i class="far fa-heart"></i></button>
+                                                            </form>
+                                                        </td>
+                                                    </tr>
+                                                </div>
+                                            </div>
+
+                                            <div class="product-info">
+                                                <h2 class="product-title"><a href="/client/pd_details/{{data.pd_id}}">{{data.pd_name}}</a></h2>
+                                                <div class="product-price">
+                                                    <span>₹{{data.pd_price}}</span>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    {% endfor %}

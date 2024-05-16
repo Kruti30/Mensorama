@@ -1,0 +1,504 @@
+<!doctype html>
+{% load static %}
+<html class="no-js" lang="zxx">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>MENSORAMA - expert of mens grooming</title>
+    <meta name="robots" content="noindex, follow"/>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Place favicon.png in the root directory -->
+    <link rel="shortcut icon" href="{% static 'img/favicon.png' %}" type="image/x-icon"/>
+    <!-- Font Icons css -->
+    <link rel="stylesheet" href="{% static 'css/font-icons.css' %}">
+    <!-- plugins css -->
+    <link rel="stylesheet" href="{% static 'css/plugins.css' %}">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- Responsive css -->
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css ">
+
+
+ <!-- <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>-->
+
+
+
+<!--<link href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="Stylesheet">-->
+<!--<script src='http://cdn.rawgit.com/pguso/jquery-plugin-circliful/master/js/jquery.circliful.min.js'></script>-->
+<!--  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>-->
+
+<!--<link href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.min.css" rel="stylesheet">-->
+<!--<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.min.js"></script>-->
+
+
+<!--<script href="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+<script href="{% static 'js/jquery-ui.min.js' %}"></script>-->
+
+    <script>
+          $(function(){
+            $("#search1").autocomplete({
+              source: "{% url 'pro_search'  %}"
+
+            });
+          });
+
+
+    </script>
+
+    <script>
+        function load(){
+
+            $.ajax({
+                url:"/client/client_header_menu/",
+                  success: function(data)
+                      {
+                         $("#menu").html(data);
+                      }
+            });
+
+            load1();
+        }
+    </script>
+
+
+        <script>
+        function load1(){
+
+            $.ajax({
+                url:"/client/client_header_cart/",
+                  success: function(data)
+                      {
+                         $("#cart").html(data);
+                      }
+            });
+        }
+    </script>
+
+    <!--<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>-->
+    <!--<script src="https://code.jquery.com/jquery-1.12.4.js"></script>-->
+</head>
+
+<body onload="load()">
+
+
+<!-- Add your site or application content here -->
+
+<!-- Utilize Cart Menu Start -->
+<div id="ltn__utilize-cart-menu" class="ltn__utilize ltn__utilize-cart-menu">
+    <div class="ltn__utilize-menu-inner ltn__scrollbar">
+        <div class="ltn__utilize-menu-head">
+            <span class="ltn__utilize-menu-title">Cart</span>
+            <button class="ltn__utilize-close"><a href="/client/cart_delete/{{data.cart_id}}">×</a></button>
+        </div>
+        <div class="mini-cart-product-area ltn__scrollbar">
+            {% if 'client_id' in request.session %}
+                    {% for data in item %}
+            <div class="mini-cart-item clearfix">
+                 <div class="mini-cart-img">
+                     <a href="#"><img src="/c_static/img/product/{{data.pd_id.pd_img}}" alt="#"></a>
+                     <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>
+                 </div>
+                    <div class="mini-cart-info">
+                        <h6><a href="#">{{data.pd_id.pd_name}}</a></h6>
+                        <span class="mini-cart-quantity">{{data.pd_id.pd_price}}</span>
+                    </div>
+            </div>
+                  {% endfor %}
+                {% endif %}
+
+        </div>
+        <div class="mini-cart-footer">
+            <div class="mini-cart-sub-total">
+                <h5>Subtotal: <span>rs. 700</span></h5>
+            </div>
+            <div class="btn-wrapper">
+                <a href="/client/c_cart/" class="theme-btn-1 btn btn-effect-1">View Cart</a>
+                <a href="/client/r_checkout/" class="theme-btn-2 btn btn-effect-2">Checkout</a>
+            </div>
+            <p> Shipping at the very minimal charge of rs.50!</p>
+        </div>
+
+    </div>
+</div>
+<!-- Body main wrapper start -->
+<div class="body-wrapper">
+
+    <!-- HEADER AREA START (header-4) -->
+    <header class="ltn__header-area ltn__header-4 ltn__header-6 ltn__header-transparent--- gradient-color-2---">
+        <!-- ltn__header-top-area start -->
+        <div class="ltn__header-top-area top-area-color-white">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="ltn__top-bar-menu">
+                            <ul>
+                                <li><a href="mailto:info.mensorama@gmail.com?Subject=Flower%20greetings%20to%20you"><i
+                                        class="icon-mail"></i> info.mensorama@gmail.com</a></li>
+                                <li><i class="icon-placeholder"></i> Prahlad Nagar, Ahmedabad, Gujarat
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="top-bar-right text-right">
+                            <div class="ltn__top-bar-menu">
+                                <ul>
+                                    <li>
+                                        <!-- ltn__language-menu -->
+                                        </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ltn__header-top-area end -->
+
+        <!-- ltn__header-middle-area start -->
+        <div class="ltn__header-middle-area ltn__header-sticky ltn__sticky-bg-white">
+            <div class="container">
+                <div class="row">
+                    <div class="">
+
+                    </div>
+                    <div class="col header-menu-column">
+                        <div class="header-menu d-none d-xl-block">
+                            <nav>
+                                <div class="ltn__main-menu" >
+                                    <ul>
+                                        <li>
+                                        <div class="">
+                                                <a href="/client/c_index/"><img src="{% static 'img/testimonial/gt.png' %}" alt="Logo" height="90px" width="350px"></a>
+                                        </div>
+                                        </li>
+
+                                        <li class="men-icon"><a href="/client/c_index/">Home</a></li>
+
+
+
+                                        <li class="menu-icon"   ><a href="/client/c_shop/" >Products</a>
+                                            <ul id="menu" name="menu">
+                                            </ul>
+                                        </li>
+
+                                        <li class="menu-icon"><a href="/client/c_index/">Shop By Categories</a>
+                                            <ul class="mega-menu">
+                                                <li>
+                                                    <div class="menu-product-item">
+                                                        <div class="menu-product-img">
+                                                            <a href="/client/c_shop2/4"><img style="height:320px"
+                                                                    src="/c_static/img/product/BO_3.2.png" alt="#"></a>
+                                                        </div>
+                                                        <div class="product-info">
+                                                            <h2 class="product-title"><a href="/client/c_shop2/4">BEARD CARE
+                                                                </a></h2>
+
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="menu-product-item">
+                                                        <div class="menu-product-img">
+                                                            <a href="/client/c_shop2/1"><img style="height:320px"
+                                                                    src="/c_static/img/product/LOUISSTITCHMenPrintedAccessoryGiftSet1.png" alt="#"></a>
+                                                        </div>
+                                                        <div class="product-info">
+                                                            <h2 class="product-title"><a href="/client/c_shop2/1">ACCESSORIES</a></h2>
+
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="menu-product-item">
+                                                        <div class="menu-product-img">
+                                                            <a href="/client/c_shop2/3"><img style="height:320px"
+                                                                    src="/c_static/img/product/H_C_SC_2.jpg" alt="#"></a>
+                                                        </div>
+                                                        <div class="product-info">
+                                                            <h2 class="product-title"><a href="/client/c_shop2/3">HAIR CARE</a></h2>
+
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="menu-product-item">
+                                                        <div class="menu-product-img">
+                                                            <a href="/client/c_shop2/2"><img style="height:320px"
+                                                                    src="/c_static/img/product/Swiss-Beauty-Charcoal-Peel-Off-Mask.png" alt="#"></a>
+                                                        </div>
+                                                        <div class="product-info">
+                                                            <h2 class="product-title"><a href="/client/c_shop2/2">SKIN CARE</a></h2>
+
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="menu-icon"><a href="#">My Activity</a>
+                                            <ul>
+                                                 {% if 'client_id' in request.session %}
+                                                <li><a href="/client/wishlist/">Wishlist</a></li>
+                                                <li><a href="/client/r_checkout/">Checkout</a></li>
+                                                <li><a href="/client/contact/">contact us</a></li>
+                                                <li><a href="/client/c_account/">My Account</a></li>
+                                                {% else %}
+                                                 <li><a href="/client/wishlist/">Wishlist</a></li>
+                                                <li><a href="/client/r_checkout/">Checkout</a></li>
+                                                <li><a href="/client/c_account/">My Account</a></li>
+                                                <li><a href="/client/clientlogin/">Sign in</a></li>
+                                                <li><a href="/client/c_register/">Register</a></li>
+                                                {% endif %}
+                                            </ul>
+                                        </li>
+                                        <li><a href="/client/c_account/">My Account</a></li>
+
+                                        <li>
+                                            <div class="col">
+                                                <div class="ltn__header-options">
+                                                    <!-- user-menu -->
+                                                    <div class="ltn__drop-menu user-menu" >
+                                                        <ul>
+                                                            <li>
+                                                                <a href="/client/c_account/"><i class="icon-user"></i></a>
+                                                                <ul>
+                                                                    {% if 'client_id' in request.session %}
+
+                                                                    <li><a href="/client/c_account/">My Account</a></li>
+                                                                    <li><a href="/client/wishlist/">Wishlist</a></li>
+                                                                    <li><a href="/client/c_logout/">logout</a></li>
+                                                                    {% else %}
+                                                                    <li><a href="/client/clientlogin/">Sign in</a></li>
+                                                                    <li><a href="/client/c_register/">Register</a></li>
+
+                                                                    <li><a href="/client/c_account/">My Account</a></li>
+
+
+                                                                    {% endif %}
+                                                                </ul>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <!-- mini-cart -->
+
+                                                    <div class="mini-cart-icon" >
+                                                        <a href="/client/c_cart/"> <i class="icon-shopping-cart">{{request.session.cart.key}}<sup id="cart"></sup></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ltn__header-middle-area end -->
+    </header>
+</div>
+
+
+{% block content %}
+
+{% endblock %}
+
+    <div class="ltn__feature-area before-bg-bottom before-bg-bottom-2 plr--5">
+        <div class="container-fluid" >
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ltn__feature-item-box-wrap ltn__border-between-column white-bg">
+                        <div class="row">
+                            <div class="col-xl-3 col-md-6 col-12">
+                                <div class="ltn__feature-item ltn__feature-item-8">
+                                    <div class="ltn__feature-icon">
+                                        <img src="{% static 'img/icons/svg/4-track.svg' %}" alt="#">
+                                    </div>
+                                    <div class="ltn__feature-info">
+                                        <h4>Free home delivery</h4>
+                                        <p>Provide free home delivery for
+                                            all product over $100</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6 col-12">
+                                <div class="ltn__feature-item ltn__feature-item-8">
+                                    <div class="ltn__feature-icon">
+                                        <img src="{% static 'img/icons/svg/5-madel.svg' %}" alt="#">
+                                    </div>
+                                    <div class="ltn__feature-info">
+                                        <h4>Quality Products</h4>
+                                        <p>We ensure the product quality
+                                            that is our main goal</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6 col-12">
+                                <div class="ltn__feature-item ltn__feature-item-8">
+                                    <div class="ltn__feature-icon">
+                                        <img src="{% static 'img/icons/svg/6-return.svg' %}" alt="#">
+                                    </div>
+                                    <div class="ltn__feature-info">
+                                        <h4>3 Days Return</h4>
+                                        <p>Return product within 3 days
+                                            for any product you buy</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6 col-12">
+                                <div class="ltn__feature-item ltn__feature-item-8">
+                                    <div class="ltn__feature-icon">
+                                        <img src="{% static 'img/icons/svg/7-support.svg' %}" alt="#">
+                                    </div>
+                                    <div class="ltn__feature-info">
+                                        <h4>Online Support</h4>
+                                        <p>We ensure the product quality
+                                            that you can trust easily</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FEATURE AREA END -->
+
+<!-- FOOTER AREA START -->
+<footer class="ltn__footer-area  ">
+    <div class="footer-top-area  section-bg-1 plr--5">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-3 col-md-6 col-sm-6 col-12">
+                    <div class="footer-widget footer-about-widget">
+                        <div class="footer-logo">
+                            <div class="site-logo">
+                                <img src="{% static 'img/testimonial/logonobg.png' %}" alt="Logo">
+                            </div>
+                        </div>
+                        <p>Mensorama represents Grooming & Cosmetics industry at one stop platform, here customer can find their desired product of different brands.</p>
+                        <div class="footer-address">
+                            <ul>
+                                <li>
+                                    <div class="footer-address-icon">
+                                        <i class="icon-placeholder"></i>
+                                    </div>
+
+                                </li>
+                                <li>
+                                    <div class="footer-address-icon">
+                                        <i class="icon-call"></i>
+                                    </div>
+                                    <div class="footer-address-info">
+                                        <p>+91-8160199469</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="footer-address-icon">
+                                        <i class="icon-mail"></i>
+                                    </div>
+                                    <div class="footer-address-info">
+                                        <p>info.mensorama@gmail.com</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-md-6 col-sm-6 col-12">
+                    <div class="footer-widget footer-menu-widget clearfix">
+                        <h4 class="footer-title">Company</h4>
+                        <div class="footer-menu">
+                            <ul>
+                                <li><a href="/client/c_about/">About</a></li>
+                                <li><a href="/client/contact/">Contact Us</a></li>
+
+
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-md-6 col-sm-6 col-12">
+                    <div class="footer-widget footer-menu-widget clearfix">
+                        <h4 class="footer-title">product.</h4>
+                        <div class="footer-menu">
+                            <ul>
+
+                                <li><a href="/client/c_shop/">products</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-md-6 col-sm-6 col-12">
+                    <div class="footer-widget footer-menu-widget clearfix">
+                        <h4 class="footer-title">Customer Care</h4>
+                        <div class="footer-menu">
+                            <ul>
+                                <li><a href="/client/clientlogin/">Login</a></li>
+                                <li><a href="/client/c_account/">My account</a></li>
+                                <li><a href="/client/wishlist/">Wish List</a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6 col-sm-12 col-12">
+                    <div class="footer-widget footer-newsletter-widget">
+                        <h4 class="footer-title">Newsletter</h4>
+                        <p>email you are signed up with</p>
+                        <div class="footer-newsletter">
+                            <form action="#">
+                                <input type="email" name="email" placeholder="{{data.email}}">
+<!--
+                                <div class="btn-wrapper">
+                                    <button class="theme-btn-1 btn" type="submit"><i class="fas fa-location-arrow"></i>
+                                    </button>
+                                </div>
+-->
+                            </form>
+                        </div>
+                        <h5 class="mt-30">We Accept</h5>
+                        <p>online payment</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ltn__copyright-area ltn__copyright-2 section-bg-2 plr--5">
+        <div class="container-fluid ltn__border-top-2">
+            <div class="row">
+                <div class="col-md-6 col-12">
+                    <div class="ltn__copyright-design clearfix">
+                        <p>All Rights Reserved @ Company <span class="current-year"></span></p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-12 align-self-center">
+                    <div class="ltn__copyright-menu text-right">
+                        <ul>
+                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="#">Claim</a></li>
+                            <li><a href="#">Privacy & Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+</body>
+<!-- FOOTER AREA END -->
+
+<script src="{% static 'js/plugins.js' %}"></script>
+<!-- Main JS -->
+<script src="{% static 'js/main.js' %}"></script>

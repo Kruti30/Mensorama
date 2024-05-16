@@ -1,0 +1,195 @@
+{% extends 'client_header.html' %}
+{% load static %}
+{% block content %}
+
+    <!-- Utilize Cart Menu Start -->
+    <!-- Utilize Cart Menu End -->
+
+    <!-- Utilize Mobile Menu Start -->
+    <!-- Utilize Mobile Menu End -->
+
+<script>
+          $(function(){
+            $("#search1").autocomplete({
+              source: "{% url 'pro_search'  %}"
+
+            });
+          });
+
+
+    </script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+    <!-- BREADCRUMB AREA START -->
+    <div class="ltn__breadcrumb-area ltn__breadcrumb-area-4 bg-overlay-theme-10--- bg-image" data-bg="img/bg/4.png">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ltn__breadcrumb-inner ltn__breadcrumb-inner-4 justify-content-between">
+                        <div class="section-title-area">
+                            <h3 class="section-title white-color">Shop</h3>
+                        </div>
+                        <div class="ltn__breadcrumb-list">
+                            <ul>
+                                <li><a href="/client/c_index/">Home</a></li>
+                                <li>Shop</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- BREADCRUMB AREA END -->
+
+    <!-- PRODUCT DETAILS AREA START -->
+    <div class="ltn__product-area mb-120">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-11">
+                    <div class="ltn__shop-options">
+                        <ul>
+                            <li>
+                                <div class="ltn__grid-list-tab-menu ">
+                                    <div class="nav">
+                                        <a class="active show" data-toggle="tab" href="#liton_product_grid"><i class="fas fa-th-large"></i></a>
+
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li>
+                            <div class="ltn__drop-menu ltn__currency-menu">
+                               <div class="search" style="position:relative;top:20px;right:0px;">
+                                   <div class="ui-front" >
+                                       <form action="/client/searchp/" method="GET">
+
+                                           <input type="search"  style="background:white" placeholder="Search The product..." onfocus="this.value=''"  name='pd_name'>
+                                                                 <button class="search-btn" type="submit"><i class="fa fa-search"></i></button>
+
+
+                                       </form>
+                                   </div>
+                               </div>
+                            </div>
+                            </li>
+                            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+                            <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+                        <script>
+                        $(document).ready(function() {
+
+                            $("#orderby").change(function () {
+                                var url = $("#sortform").attr("data-sort-url");
+                                var SId = $(this).val();
+
+                                $.ajax({
+                                    url: url,
+                                    data: {
+                                        'sort': SId,
+                                    },
+                            success: function (data) {
+                                $("#product").html(data);  // replace the contents of the city input with the data that came from the server
+
+                            }
+                            });
+
+                            });
+                        });
+                </script>
+                            <li>
+                            <form id="sortform" method="POST" data-sort-url="{% url 'ajax_sort_products' %}" action="">
+                                           <select id="orderby" style="width:160px;height:160px;padding:10px 50px 10px 50px;">
+                                                <option value="0">Sort by</option>
+                                                <option value="5">leatest </option>
+                                                <option value="1">price: low to high</option>
+                                                <option value="2">price: high to low</option>
+                                                <option value="3">Name A to Z</option>
+                                                <option value="4">Name Z to A</option>
+                                            </select>
+                               </form>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-content">
+                        <div class="tab-pane fade active show" id="liton_product_grid">
+                            <div class="ltn__product-tab-content-inner ltn__product-grid-view">
+                                <div  id="product" class="row" >
+                                    <!-- ltn__product-item -->
+
+                                {% for data in product %}
+
+
+                                    <div class="col-xl-4 col-sm-6 col-12" >
+                                        <div class="ltn__product-item ltn__product-item-3 text-center">
+                                            <div class="product-img">
+                                                <img src="/c_static/img/product/{{data.pd_img}}" alt="#" style="height:450px"></a>
+                                                <div class="product-badge">
+                                                    <ul>
+
+                                                    </ul>
+                                                </div>
+                                                <div class="product-hover-ction">
+                                                    <tr>
+
+                                                            <form action="/client/ins_wishlist/" method="POST">
+                                                                 {% csrf_token %}
+                                                            <input type="hidden" name="pd_id" value="{{data.pd_id}}">
+
+                                                                {% if data.pd_id in wish %}
+                                                                    <button type="submit" title="Wishlist" data-toggle="modal"  style="position:relative;top:-415px;left:130px;color:red">
+                                                                    <i class="fa fa-heart"></i></button>
+                                                                {% else %}
+                                                                    <button type="submit" title="Wishlist" data-toggle="modal"  style="position:relative;top:-415px;left:130px; back-color:red">
+                                                                    <i class="far fa-heart"></i></button>
+                                                                {% endif %}
+                                                            </form>
+
+                                                        </td>
+                                                    </tr>
+                                                </div>
+                                            </div>
+
+                                            <div class="product-info">
+                                                <h2 class="product-title"><a href="/client/pd_details/{{data.pd_id}}">{{data.pd_name}}</a></h2>
+                                                <div class="product-price">
+                                                    <span>₹{{data.pd_price}}</span>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                    <!-- ltn__product-item -->
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- PRODUCT DETAILS AREA END -->
+
+
+
+
+
+
+    <!-- MODAL AREA END -->
+
+    <!-- MODAL AREA START (Add To Cart Modal) -->
+        <!-- MODAL AREA END -->
+
+</div>
+<!-- Body main wrapper end -->
+ <!-- All JS Plugins -->
+   <!-- <script src="{% static 'js/plugins.js' %}"></script>-->
+    <!-- Main JS -->
+    <script src="{% static 'js/main.js' %}"></script>
+
+{% endblock %}

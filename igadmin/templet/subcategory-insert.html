@@ -1,0 +1,90 @@
+
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!-- Main Content -->
+
+      <div class="main-content">
+        <section class="section">
+          <div class="section-header">
+						<div class="row">
+							<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+								<div class="section-header-breadcrumb-content">
+									<h1>Subcategory Form</h1>
+									<div class="section-header-breadcrumb">
+										<div class="breadcrumb-item active"><a href="/dashboard/"><i class="fas fa-home"></i></a></div>
+									</div>
+								</div>
+							</div>
+						</div>
+		  </div>
+			<div class="section-body">
+
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12">
+						<div class="card">
+							<div class="card-header">
+								<h4>Subcategory Element</h4>
+							</div>
+							<div class="card-body" >
+								<div class="row">
+									<div class="col-lg-4 col-md-12 col-sm-12">
+										<div class="form-group">
+											<form method="post" action="/scat_insert/" align="center">
+												{% csrf_token %}
+												<div class="form-group">
+													<label>subcategory name </label>
+													<input type="text" placeholder="subcategory Name" name = "scat_name"/><br/>
+												</div>
+
+												<div class="form-group">
+													<label>cat id</label>
+													<input  type="text" placeholder="scat id" name = "cat_id"/><br/>
+												</div>
+
+												<div class="form-group">
+													<label>subcategory description</label>
+													<input  type="text" placeholder="subcategory description" name = "scat_description"/><br/>
+												</div>
+
+
+
+
+													<div class="form-group">
+
+													<button type = "submit">SUBMIT</button>
+
+													</div>
+												</form></div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+		</section>
+	  </div>
+</div>
+</div>
+  <!-- General JS Scripts -->
+  <script src="{% static 'assets/js/app.min.js' %}"></script>
+  <!-- JS Libraies -->
+  <!-- Page Specific JS File -->
+  <!-- Template JS File -->
+  <script src="{% static 'assets/js/scripts.js' %}"></script>
+  <script src="{% static 'assets/bundles/jquery.sparkline.min.js' %}"></script>
+
+<!-- Mirrored from radixtouch.in/templates/snkthemes/grexsan/source/light/basic-form.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 17 Dec 2020 04:01:18 GMT -->
+{% endblock %}
+
+
+
+
+
+
+
+
+
+

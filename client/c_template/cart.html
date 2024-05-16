@@ -1,0 +1,214 @@
+{% extends 'client_header.html' %}
+{% load static %}
+{% block content %}
+
+    <!-- HEADER AREA END -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootsetrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script>
+
+function getprice(val)
+{
+<!--	var q = $("#qty-"+val).val();-->
+
+        var q = "1";
+	$.ajax({
+	        type:'GET',
+			url:'/client/update_quantity/'+val,
+            data:{id:val,qty:q},
+			success: function(data){
+
+                    location.reload();
+			}
+	});
+}
+
+function getprice1(val)
+{
+<!--	var q = $("#qty-"+val).val();-->
+        var q = "-1";
+	$.ajax({
+	        type:'GET',
+			url:'/client/update_quantity/'+val,
+            data:{id:val,qty:q},
+			success: function(data){
+
+                    location.reload();
+			}
+	});
+}
+</script>
+    <!-- Utilize Cart Menu Start -->
+    <!-- Utilize Cart Menu End -->
+
+    <!-- Utilize Mobile Menu Start -->
+    <!-- Utilize Mobile Menu End -->
+
+    <div class="ltn__utilize-overlay"></div>
+
+    <!-- BREADCRUMB AREA START -->
+    <div class="ltn__breadcrumb-area ltn__breadcrumb-area-4 bg-overlay-theme-10--- bg-image" data-bg="img/bg/4.png">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ltn__breadcrumb-inner ltn__breadcrumb-inner-4 justify-content-between">
+                        <div class="section-title-area">
+                            <h3 class="section-title white-color">Cart</h3>
+                        </div>
+                        <div class="ltn__breadcrumb-list">
+                            <ul>
+                                <li><a href="/client/c_index/">Home</a></li>
+                                <li>Cart</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- BREADCRUMB AREA END -->
+
+    <!-- SHOPING CART AREA START -->
+    <div class="liton__shoping-cart-area mb-120">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="shoping-cart-inner">
+                        <div class="shoping-cart-table table-responsive">
+                            <table class="table">
+                                <!-- <thead>
+                                    <th class="cart-product-remove">Remove</th>
+                                    <th class="cart-product-image">Image</th>
+                                    <th class="cart-product-info">Product</th>
+                                    <th class="cart-product-price">Price</th>
+                                    <th class="cart-product-quantity">Quantity</th>
+                                    <th class="cart-product-subtotal">Subtotal</th>
+                                </thead> -->
+                                <tbody>
+                                {% if 'client_id' in request.session %}
+                                    {% for data in item  %}
+
+                                            <tr>
+                                                <td class="cart-product-remove"><a href="/client/cart_delete/{{data.cart_id}}">delete</a></td>
+                                                <td class="cart-product-image">
+                                                    <a href="product_details.html"><img src="/c_static/img/product/{{data.pd_id.pd_img}}" alt="#"></a>
+                                                </td>
+
+                                                    <td class="cart-product-info">
+                                                        <h4><a href="product_details.html">{{data.pd_id.pd_name}}</a></h4>
+                                                    </td>
+
+                                                    <td class="cart-product-price">₹{{data.pd_id.pd_price}}</td>
+
+                                                    <td>
+
+                                                        <a href=""  onclick="getprice1({{data.cart_id}})">-</a>
+
+                                                        <input type="text" min=0 id="qty.{{data.cart_id}}" value="{{data.pd_qty}}"  class="cart-plus-minus-box">
+
+                                                        <a href="" onclick="getprice({{data.cart_id}})">+</a>
+
+                                                    </td>
+
+
+                                                    <td class="cart-product-subtotal">₹{{data.amount}}</td>
+                                            </tr>
+                                    {% endfor %}
+                                {% else %}
+                                    {% for key,value in request.session.cart.items %}
+                                        <tr>
+                                            <td class="cart-product-remove"><a href="/client/cart_delete/{{value.id}}">dellllete</a></td>
+                                            <td class="cart-product-image">
+                                            <a href="product_details.html">
+                                                <img src="/c_static/img/product/{{value.image}}" alt="#"></a>
+
+                                            </td>
+
+                                            <td class="cart-product-info">
+                                                <h4><a href="product_details.html">{{value.name}}</a></h4>
+                                            </td>
+                                            <td class="cart-product-price">₹{{value.price}}</td>
+                                          <!-- <td>
+
+                                                        <a href=""  onclick="getprice1({{data.cart_id}})">-</a>
+
+                                                        <input type="text" id="qty.{{value.id}}" value="{{value.quantity}}"  class="cart-plus-minus-box">
+
+                                                        <a href="" onclick="getprice({{value.cart_id}}) ">+</a>
+
+                                                    </td>-->
+                                            <td class="cart-product-subtotal">₹{{data.amount}}</td>
+                                        </tr>
+                                    {% endfor %}
+                                {% endif %}
+
+                                <tr class="cart-coupon-row">
+
+                                        <td>
+                                            <button type="submit" class="btn theme-btn-2 btn-effect-2-- disabled">cart total: ₹{{total}}</a></button>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+                            {% for data in messages %}
+                                 <h5><span style="color:red"> {{data}} </span></h5>
+                            {% endfor %}
+                        </div>
+
+                        <div class="shoping-cart-total mt-50">
+                            <h4>Cart Totals</h4>
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td>Cart Subtotal</td>
+                                        <td>₹{{total}}</td>
+                                    </tr>
+<!--                                    <tr>-->
+<!--                                        <td>Grand Total</td>-->
+<!--                                        <td>₹{{total|add:50}}</td>-->
+<!--                                    </tr>-->
+                                    <tr>
+                                        <td><strong>Order Total</strong></td>
+                                        <td><strong>₹{{total}}</strong></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                              {% if 'client_id' in request.session %}
+                            <div class="btn-wrapper text-right">
+                                <a href="/client/r_checkout/" class="theme-btn-1 btn btn-effect-1">Proceed to checkout</a>
+                            </div>
+                             {% else %}
+                            <div class="btn-wrapper text-right">
+                                <a href="/client/clientlogin/" class="theme-btn-1 btn btn-effect-1">Proceed to checkout</a>
+                            </div>
+                            {% endif %}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<!-- Body main wrapper end -->
+
+
+    <!-- All JS Plugins -->
+    <script src="{% static 'js/plugins.js' %}"></script>
+    <!-- Main JS -->
+    <script src="{% static 'js/main.js' %}"></script>
+
+
+{% endblock %}
+

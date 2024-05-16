@@ -1,0 +1,16 @@
+{% load static %}
+{% load cart_tag %}
+
+
+
+                                                {% for c in category %}
+                                                    <li value="{{c.cat_id}}"><a href="/client/c_shop2/{{c.cat_id}}">{{c.cat_name}}
+                                                    <a href="#"><span class="float-right">></span></a>
+                                                        <ul>{% for s in subcategory %}
+                                                                 {% if c.cat_id == s.cat_id_id %}
+                                                                    <li value="{{s.scat_id}}"><a href="/client/c_shop1/{{s.scat_id}}">{{s.scat_name}}</a></li>
+                                                                 {% endif %}
+                                                            {% endfor %}
+                                                        </ul>
+                                                    </li>
+                                                {% endfor %}

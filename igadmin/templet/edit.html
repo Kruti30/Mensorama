@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<body>
+<form method="post" action="/update/{{users.u_id}}">
+
+    {% csrf_token %}
+    <br>
+    <h3>Update Details</h3>
+    <label>User Name </label>
+    <input type="text" placeholder="user Name" name = "u_name" value="{{users.u_name}}"/><br/>
+
+    <label>Email</label>
+    <input type="text" placeholder="user Email" name = "email" value="{{users.email}}"/><br/>
+
+    <label>Password</label>
+    <input type="text" placeholder="user Email" name = "password" value="{{users.password}}"/><br/>
+
+    <label>Date of Birth </label>
+    <input type="text" placeholder="user dob" name = "dob" value="{{users.dob}}"/><br/>
+
+    <label>phone no</label>
+    <input type="text" placeholder="user phone no" name = "phone_no" value="{{users.phone_no}}"/><br/>
+
+    <label>address</label>
+    <input type="text" placeholder="address of user" name = "address" value="{{users.address}}"/><br/>
+
+    <label>is_admin</label>
+    <input type="text" placeholder=" is admin or not" name = "is_admin" value="{{users.is_admin}}"/><br/>
+
+    <button type = "submit">Update</button>
+</form>
+</body>
+</html>

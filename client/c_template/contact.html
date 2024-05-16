@@ -1,0 +1,92 @@
+{% extends 'client_header.html' %}
+{% load static %}
+{% block content %}
+
+
+    <!-- BREADCRUMB AREA START -->
+    <div class="ltn__breadcrumb-area ltn__breadcrumb-area-4 bg-overlay-theme-10--- bg-image" data-bg="img/bg/4.png">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ltn__breadcrumb-inner ltn__breadcrumb-inner-4 justify-content-between">
+                        <div class="section-title-area">
+                            <h3 class="section-title white-color">Contact us</h3>
+                        </div>
+                        <div class="ltn__breadcrumb-list">
+                            <ul>
+                                <li><a href="/client/c_index/">Home</a></li>
+                                <li>Contact us</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- BREADCRUMB AREA END -->
+
+    <!-- GOOGLE MAP AREA START -->
+    <div class="google-map">
+
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3672.1917371547443!2d72.50270221466202!3d23.016731184955976!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e848ac8a7faf3%3A0xc49f901866d2abd5!2sShri%20Chimanbhai%20Patel%20Institute%20of%20Management%20%26%20Research!5e0!3m2!1sen!2sin!4v1679907132907!5m2!1sen!2sin" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" width="1600"></iframe>
+<!--        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9334.271551495209!2d-73.97198251485975!3d40.668170674982946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25b0456b5a2e7%3A0x68bdf865dda0b669!2sBrooklyn%20Botanic%20Garden%20Shop!5e0!3m2!1sen!2sbd!4v1590597267201!5m2!1sen!2sbd" width="100%" height="100%" frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>-->
+
+    </div>
+    <!-- GOOGLE MAP AREA END -->
+
+    <!-- CONTACT MESSAGE AREA START -->
+    <div class="ltn__contact-message-area pt-115 pb-70">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-7">
+                    <div class="ltn__form-box contact-form-box-2 mb-50 box-shadow--- white-bg--">
+                        <form id="contact-form" action="/client/contact/" method="POST">
+                            {% csrf_token %}
+                            <input type="text"  placeholder="Enter your name" id="user_name" name="user_name">
+                            <input type="email"  placeholder="Enter email address" id="user_email" name="user_email">
+                            <textarea name="message" placeholder="Enter message" id="message" name="message"></textarea>
+                            <div class="btn-wrapper mt-0">
+                                <button class="btn theme-btn-1 btn-effect-1 text-uppercase" type="submit">Send</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-5">
+                    <div class="ltn__contact-address-area pl-70">
+                        <div class="ltn__contact-address-item-4">
+                            <h3>Address</h3>
+                            <p>18/A, shri chimanbhai patel institue<br> prahalad nagar, Ahmedabad</p>
+                        </div>
+                        <div class="ltn__contact-address-item-4">
+                            <h3>Email</h3>
+                            <p>info.mensorama@gmail.com</p>
+                        </div>
+                        <div class="ltn__contact-address-item-4">
+                            <h3>Telephone</h3>
+                            <p>+91 8160199469</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- CONTACT MESSAGE AREA END -->
+
+    <!-- FEATURE AREA START ( Feature - 3) -->
+    <!-- FEATURE AREA END -->
+
+    <!-- FOOTER AREA START -->
+    <!-- FOOTER AREA END -->
+
+
+<!-- Body main wrapper end -->    
+
+    <!-- All JS Plugins -->
+    <script src="{% static 'js/plugins.js' %}"></script>
+    <!-- Contact Form -->
+    <script src="{% static 'js/contact.js' %}"></script>
+    <!-- Main JS -->
+    <script src="{% static 'js/main.js' %}"></script>
+
+
+{% endblock %}
